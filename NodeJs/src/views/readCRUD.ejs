@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Read CRUD</title>
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Email</th>
+            <th scope="col">Last name</th>
+            <th scope="col">First name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for ( let i=0; i < data.length; i++ ) { %>
+          <tr>
+            <td><%= data[i].id %></td>
+            <td><%= data[i].email %></td>
+            <td><%= data[i].firstName %></td>
+            <td><%= data[i].lastName %></td>
+            <td><%= data[i].address %></td>
+            <td class="df">
+              <a
+                href="/CRUD/detail/<%= data[i].id %>"
+                class="btn btn-primary mr-1"
+                >Edit</a
+              >
+              <form action="/CRUD/delete/<%= data[i].id %>" method="post">
+                <button class="btn btn-danger">Delete</button>
+              </form>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
